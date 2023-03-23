@@ -16,6 +16,46 @@ https://leetcode.cn/problems/longest-palindromic-substring/description/
 
 输入：s = "cbbd"
 输出："bb"
+  
+###################################################################
+#  Manacher算法 from ChatCPT
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        string new_s = "^#";
+        for (const char &c: s) {
+            new_s += c;
+            new_s += "#";
+        }
+        new_s += "$";
+        int n = new_s.size();
+
+        vector<int> v(n, 0);
+        int center = 0, maxRight = 0;
+        for (int i = 1; i < n; i++) {
+            if (i < maxRight) {
+                v[i] = min(v[2 * center - i], maxRight - i);
+            }
+            while (new_s[i + v[i] + 1] == new_s[i - v[i] - 1]) {
+                v[i]++;
+            }
+            if (i + v[i] > maxRight) {
+                center = i;
+                maxRight = i + v[i];
+            }
+        }
+        int max_len = 0, idx = 0;
+        for (int i = 1; i < n; i++) {
+            if (v[i] > max_len) {
+                max_len = v[i];
+                idx = i;
+            }
+        }
+
+        idx = (idx - max_len) / 2;
+        return s.substr(idx, max_len);
+    }
+};
  
 
 ###################################################################
