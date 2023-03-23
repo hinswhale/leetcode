@@ -34,6 +34,46 @@ class Solution:
             left -= 1
             right += 1
         return s[left+1:right]
+  
+ ###################################################################
+ https://segmentfault.com/a/1190000008484167
+
+"""
+若center的回文串最右侧是maxRight，j是i的对称点【"｜"处为maxRight位置】则
+1. j 的回文串有一部分在 id 的之外， 则i的回文半径p[i] = maxRight - i
+*｜--j--*=center=*--i--｜*
+2. j 的回文串全部在 id 的里面，则p[i] = p[j], p[i]可否可越过maxRight 否，与p[j]的的回文串范围设定矛盾
+｜=--j--==center==--i--=｜=
+3. j 的回文串刚刚在 i的回文串左端重合，则p[i]可越过maxRight
+｜---j---==center==---i---｜=
+
+so, 1,2: P[i] 的值就等于 min(maxRight - i, P[j])
+    3: i >= maxRight, 从 i 开始往两侧扩展，计算出 P[i] 的值 如果更新位置后大于maxRight, maxRight和center
+  
+"""
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        s1 = '#'.join('^{}$'.format(s))
+        n = len(s1)
+
+        p = [0] * len(s1)
+        maxRight = 0
+        center = 0
+
+        for i in range(1, n - 1):
+            if i < maxRight:
+                p[i] = min(p[2 * center - i], maxRight - i)
+
+            while s1[i - p[i] - 1] == s1[i + p[i] + 1]:
+                p[i] += 1
+
+            if i + p[i] > maxRight:
+                center = i
+                maxRight = i + p[i]
+        max_len, center_idx = max((p[i], i) for i in range(1, n - 1))
+        print(max_len, center_idx )
+        start = (center_idx - max_len) // 2
+        return s[start: start + max_len]
 
 ###################################################################      
       
