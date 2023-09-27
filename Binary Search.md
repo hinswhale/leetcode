@@ -1,7 +1,8 @@
+
+```python
 # lower_bound 返回最小的满足 nums[i] >= target 的 i
 # 如果数组为空，或者所有数都 < target，则返回 len(nums)
 # 要求 nums 是非递减的，即 nums[i] <= nums[i + 1]
-
 # 闭区间写法
 def lower_bound(nums: List[int], target: int) -> int:
     left, right = 0, len(nums) - 1  # 闭区间 [left, right]
@@ -53,7 +54,7 @@ class Solution:
         # 如果 start 存在，那么 end 必定存在
         end = lower_bound(nums, target + 1) - 1
         return [start, end]
-
+```
 作者：灵茶山艾府
 链接：https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/
 来源：力扣（LeetCode）
