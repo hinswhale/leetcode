@@ -55,12 +55,15 @@ class Solution:
         end = lower_bound(nums, target + 1) - 1
         return [start, end]
 ```
+### 复杂度分析：
 ```markdown
 时间复杂度：$$O(\log n)$$，其中 $$$n$$$ 为 $$$\textit{nums}$$$ 的长度。
 空间复杂度：$$O(1)$$，仅用到若干额外变量。
 
 
 ```
+<img width="373" alt="image" src="https://github.com/hinswhale/leetcode/assets/22999866/c5e147cf-fd83-4cc6-94b1-ba5fed0b8480">
+
 
 ```markdown
 作者：灵茶山艾府
