@@ -55,6 +55,14 @@ class Solution:
         end = lower_bound(nums, target + 1) - 1
         return [start, end]
 ```
+复杂度分析
+时间复杂度：O(log⁡n)\mathcal{O}(\log n)O(logn)，其中 nnn 为 nums\textit{nums}nums 的长度。
+空间复杂度：O(1)\mathcal{O}(1)O(1)，仅用到若干额外变量。
+
+作者：灵茶山艾府
+链接：https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 ```markdown
 作者：灵茶山艾府
 链接：https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/
