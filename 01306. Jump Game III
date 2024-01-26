@@ -1,0 +1,63 @@
+* 1306- Jump Game III
+* 难度：Medium｜ 中等
+* 相关知识点：Array | Depth-First Search | Breadth-First Search
+* 题目链接：[https://leetcode.com/problems/jump-game-iii/description/](https://leetcode.com/problems/jump-game-iii/description/）
+
+```python
+class Solution:
+    def canReach(self, arr: List[int], start: int) -> bool:
+        def is_valid(index):
+            return  0 <= index < n 
+        
+        n = len(arr)
+
+        queue = [start]
+        visited = set()
+
+        while queue:
+            new_q = []
+            for i in queue:
+                visited.add(i)
+                if arr[i] == 0:
+                    return True
+            
+            for i in queue:
+                ls = i - arr[i]
+                rs = i + arr[i]
+                
+                if is_valid(ls) and ls not in visited: 
+                    visited.add(ls)
+                    new_q.append(ls)
+                
+                if is_valid(rs) and rs not in visited: 
+                    visited.add(rs)
+                    new_q.append(rs)
+            queue = new_q
+            
+        return False
+
+```
+
+```python
+class Solution:
+    def canReach(self, arr: List[int], start: int) -> bool:
+        def is_valid(index):
+            return  0 <= index < n 
+
+        n = len(arr)
+        visited = set()
+
+        def Reach(num):
+            if  not is_valid(num) or num in visited:
+                return False
+            
+            if arr[num] == 0:
+                return True
+            
+            visited.add(num)
+            return Reach(num - arr[num]) or Reach(num + arr[num])
+        
+        return Reach(start)
+        
+
+```
