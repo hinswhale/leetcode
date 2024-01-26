@@ -35,7 +35,6 @@ class Solution:
             queue = new_q
             
         return False
-
 ```
 
 ```python
@@ -58,6 +57,4 @@ class Solution:
             return Reach(num - arr[num]) or Reach(num + arr[num])
         
         return Reach(start)
-        
-
 ```
