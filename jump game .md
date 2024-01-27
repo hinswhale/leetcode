@@ -4,7 +4,7 @@
 Determine if you can reach the last index of an array.
 
 Approach: 
-Use `***a greedy approach***`. Iterate through the array, keep track of `***the furthest reachable index***`, and check if you can reach the end.
+Use ***a greedy approach***. Iterate through the array, keep track of `the furthest reachable index`, and check if you can reach the end.
 
 ```python
 
