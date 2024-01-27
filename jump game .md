@@ -5,7 +5,7 @@ Determine if you can reach the last index of an array.
 
 Approach: 
 Use ***a greedy approach***. Iterate through the array, keep track of `the furthest reachable index`, and check if you can reach the end.
-
+<span style="color:blue">这是蓝色文本</span>
 ```python
 
 def canJump(nums):
