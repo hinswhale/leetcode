@@ -8,13 +8,17 @@ Use ***a greedy approach***. Iterate through the array, keep track of `the furth
 
 ```python
 
-def canJump(nums):
-    max_reach = 0
-    for i in range(len(nums)):
-        if i > max_reach:
-            return False
-        max_reach = max(max_reach, i + nums[i])
-    return True
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        max_reach = 0
+        n = len(nums)
+
+        for i in range(n-1):
+            max_reach = max(ans, i + nums[i]) # 目前能到达的最远index
+            if max_reach <= i: # 最远index 没有超过下标的速度，说明被卡了
+                return False 
+        return True
+
 ```
 
 ### Jump Game II (Problem #45):
